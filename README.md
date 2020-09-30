@@ -1,2 +1,2 @@
 # drum
-Drummachine exercise
+Drum machine exercise
