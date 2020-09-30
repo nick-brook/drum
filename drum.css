@@ -1,0 +1,30 @@
+    /* Import poppins font */
+    
+    @import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
+    #text {
+        color: black;
+    }
+    
+    #drum-machine {
+        border: solid;
+    }
+    #pads{
+        border:solid;
+        color:blue;
+    }
+
+    #controls{
+        border:solid;
+        color:red;
+    }
+
+    .pad{width: 25%;
+        height:60px;
+        margin: 10px 0px;
+      }
+
+    #display{border:solid;
+            width:70%;
+        text-align: center}
+
+    #mute{}

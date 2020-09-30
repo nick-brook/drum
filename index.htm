@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="drum.css">
+
+    <!--Import JS file-->
+    <script src="drum.js"></script>
+
+
+    <!-- load fonts awesome -->
+    <script src = "https://kit.fontawesome.com/a1be6c75b5.js" crossorigin = "anonymous"></script>
+
+     <!-- ensure proper rendering and touch zooming -->
+    <meta name = "viewport" content = "width=device-width, initial-scale=1" >
+
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <!--favicon-->
+    <link rel='icon' href='#' type='image/x-icon' />
+
+    <title>Drum Machine</title>
+
+    <style></style>
+</head>
+
+<!-- load new quote when window is opened -->
+<body >
+
+
+<!--highest level container-->
+<div class="container mt-5 pb-4" id="drum-machine">
+   <h4 class="text-center"> Nick's Drum Machine</h4>
+
+    <div class="container">     
+        <div class="row">
+
+            <div class="col-sm-1">
+            </div>
+
+           <div class="d-flex flex-column col-sm-5"
+                id = "pads">
+                
+                   <div class="d-flex justify-content-around">
+                        <button type="button" class="pad" onclick="padSound()">Q</button>
+                        <button type="button" class="pad">W</button>
+                        <button type="button" class="pad">E</button>
+                    </div>
+
+                    <div class="d-flex justify-content-around">
+                        <button type="button" class="pad">A</button>
+                        <button type="button" class="pad">S</button>
+                        <button type="button" class="pad">D</button>
+                    </div>
+
+                    <div class="d-flex justify-content-around">
+                        <button type="button" class="pad">Z</button>
+                        <button type="button" class="pad">X</button>
+                        <button type="button" class="pad">C</button>
+                    </div>
+
+                
+            </div>
+
+            <div class="col-sm-1">
+            </div>
+
+            <div class="col-sm-4 d-flex flex-column justify-content-around " 
+                id = "controls">
+
+               
+
+                <div class="align-self-center custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="switch1">
+                    <label class="custom-control-label" for="switch1">Power</label>
+                </div>
+
+                 
+
+                <p class="align-self-center" id= "display" >Turn On</p>
+
+                <div>
+                    <label class="align-self-center" for="volume">Volume</label>
+                    <div class="d-flex">
+                        <i class="fas fa-volume-mute mr-2" id= "mute" ></i>
+                        <input type="range" id = "volume" class="align-self-center form-control-range">50%</input>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-1">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
