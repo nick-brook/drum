@@ -23,8 +23,8 @@
      <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+
 
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -32,10 +32,27 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
+    <!-- load Jquery libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
     <!--favicon-->
     <link rel='icon' href='#' type='image/x-icon' />
 
     <title>Drum Machine</title>
+<script>
+$(document).ready(function(){
+
+// jQuery methods go here...
+  
+         $("#volume").change(function(){
+            $("#volume").attr("title", function(i, origValue){
+                return Math.round(this.value /10)
+                });
+        });
+  });
+
+ </script>
 
     <style></style>
 </head>
@@ -58,8 +75,8 @@
                 id = "pads">
                 
                    <div class="d-flex justify-content-around">
-                        <button type="button" class="pad" onclick="padSound()">Q</button>
-                        <button type="button" class="pad">W</button>
+                        <button type="button" class="pad" id= "btnq" onclick="padSound('Q')">Q</button>
+                        <button type="button" class="pad" onclick="padSound('W')">W</button>
                         <button type="button" class="pad">E</button>
                     </div>
 
@@ -95,11 +112,14 @@
 
                 <p class="align-self-center" id= "display" >Turn On</p>
 
+                <audio></audio>
+
                 <div>
-                    <label class="align-self-center" for="volume">Volume</label>
+                    <label class="align-self-center" id = "labelvol" for="volume">Volume 5</label>
+                    
                     <div class="d-flex">
                         <i class="fas fa-volume-mute mr-2" id= "mute" ></i>
-                        <input type="range" id = "volume" class="align-self-center form-control-range">50%</input>
+                        <input type="range" id = "volume" value = "50" class="align-self-center form-control-range" title = "5" onchange = "setVolume(this.value)"></input>
                         
                     </div>
                 </div>
