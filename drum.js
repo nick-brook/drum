@@ -90,9 +90,7 @@ function padSound(drumid) {
    //     audioObj.volume = ((document.getElementById("volume").value / 100));
    audioObj.volume = document.getElementById("volume").value /100;
 
-   
-
-    document.getElementById("display").innerHTML = disptext;
+       document.getElementById("display").innerHTML = disptext;
 
 audioObj.play()
 
