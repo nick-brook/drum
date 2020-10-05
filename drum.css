@@ -1,32 +1,38 @@
     /* Import poppins font */
     
     @import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
-    #text {
-        color: black;
-    }
+  
     
     #drum-machine {
         border: solid;
+        background-color:lightblue;
+        box-shadow: 3px 3px 2px black;
     }
     #pads{
         border:solid;
-        color:blue;
+        box-shadow: 3px 3px 2px black;
+        ;
     }
 
     #controls{
         border:solid;
-        color:red;
+        box-shadow: 3px 3px 2px black;
+        ;
     }
 
     .pad{width: 25%;
         height:60px;
         margin: 10px 0px;
+        border-width: 2px;
+        box-shadow: 3px 3px 2px black;
+        background-color: lightgrey;
       }
 
-    #display{border:solid;
+    #display{border-width: 2px;
             width:70%;
         text-align: center}
 
-   button{
-       border-width: 2px;
-   }
+ 
+
+ #mute:hover{transform: scale(1.2);}
+ #unmute:hover{transform: scale(1.2);}
