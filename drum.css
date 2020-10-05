@@ -27,4 +27,6 @@
             width:70%;
         text-align: center}
 
-   
+   button{
+       border-width: 2px;
+   }
