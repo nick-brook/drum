@@ -41,16 +41,68 @@
 
     <title>Drum Machine</title>
 <script>
+
+// jQuery methods go here...
+  
+  
 $(document).ready(function(){
 
 // jQuery methods go here...
   
+$(document).keydown(function(event){
+    padSound(String.fromCharCode(event.which))
+  
+});
+
+
+        $("#unmute").hide();
+
          $("#volume").change(function(){
             $("#volume").attr("title", function(i, origValue){
                 return Math.round(this.value /10)
                 });
         });
-  });
+
+        $("#mute").click(function(){
+            $(this).hide();
+            $("#unmute").show();
+            $("#volume").attr({
+                    "title" : "0",
+                    "value" : "0"
+                    });
+            $("#labelvol").text("Muted");
+            
+        });
+
+        $("#unmute").click(function(){
+            $(this).hide();
+            $("#mute").show();
+            $("#volume").attr({
+                    "title" : "5",
+                    "value" : "50"
+                    });
+            $("#labelvol").text("Volume 5");
+        });
+
+        $(".pad").focus(function(){
+            $(this).css("border-width","3px")
+        })
+
+          $(".pad").mouseenter(function(){
+            $(this).css("border-width","3px")
+        })
+
+        $(".pad").blur(function(){
+            $(this).css("border-width","2px")
+        })
+
+          $(".pad").mouseleave(function(){
+            $(this).css("border-width","2px")
+        })
+
+});
+
+
 
  </script>
 
@@ -75,21 +127,21 @@ $(document).ready(function(){
                 id = "pads">
                 
                    <div class="d-flex justify-content-around">
-                        <button type="button" class="pad" id= "btnq" onclick="padSound('Q')">Q</button>
+                        <button type="button" class="pad" id= "btnq" onclick="padSound('Q')" >Q</button>
                         <button type="button" class="pad" onclick="padSound('W')">W</button>
-                        <button type="button" class="pad">E</button>
+                        <button type="button" class="pad" onclick="padSound('E')">E</button>
                     </div>
 
                     <div class="d-flex justify-content-around">
-                        <button type="button" class="pad">A</button>
-                        <button type="button" class="pad">S</button>
-                        <button type="button" class="pad">D</button>
+                        <button type="button" class="pad" onclick="padSound('A')">A</button>
+                        <button type="button" class="pad" onclick="padSound('S')">S</button>
+                        <button type="button" class="pad" onclick="padSound('D')">D</button>
                     </div>
 
                     <div class="d-flex justify-content-around">
-                        <button type="button" class="pad">Z</button>
-                        <button type="button" class="pad">X</button>
-                        <button type="button" class="pad">C</button>
+                        <button type="button" class="pad" onclick="padSound('Z')">Z</button>
+                        <button type="button" class="pad" onclick="padSound('X')">X</button>
+                        <button type="button" class="pad" onclick="padSound('C')">C</button>
                     </div>
 
                 
@@ -100,17 +152,16 @@ $(document).ready(function(){
 
             <div class="col-sm-4 d-flex flex-column justify-content-around " 
                 id = "controls">
-
-               
+           
 
                 <div class="align-self-center custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="switch1">
+                    <input type="checkbox" class="custom-control-input" id="switch1" onchange = setpower() checked>
                     <label class="custom-control-label" for="switch1">Power</label>
                 </div>
 
                  
 
-                <p class="align-self-center" id= "display" >Turn On</p>
+                <p class="align-self-center" id= "display" >Play the drums!</p>
 
                 <audio></audio>
 
@@ -118,7 +169,9 @@ $(document).ready(function(){
                     <label class="align-self-center" id = "labelvol" for="volume">Volume 5</label>
                     
                     <div class="d-flex">
-                        <i class="fas fa-volume-mute mr-2" id= "mute" ></i>
+                       
+                        <i class="fas fa-volume-mute mr-2" id= "mute" title = "mute on" ></i>
+                        <i class="fas fa-volume-up mr-2" id= "unmute" title = "mute off" ></i>
                         <input type="range" id = "volume" value = "50" class="align-self-center form-control-range" title = "5" onchange = "setVolume(this.value)"></input>
                         
                     </div>
