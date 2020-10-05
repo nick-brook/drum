@@ -49,11 +49,10 @@ $(document).ready(function(){
 
 // jQuery methods go here...
   
-$(document).keydown(function(event){
-    padSound(String.fromCharCode(event.which))
-  
-});
-
+        $(document).keydown(function(event){
+            activateButton(event.code.Charat(event.code.length -1);
+            padSound(String.fromCharCode(event.which),true);
+        });
 
         $("#unmute").hide();
 
@@ -84,21 +83,23 @@ $(document).keydown(function(event){
             $("#labelvol").text("Volume 5");
         });
 
-        $(".pad").focus(function(){
-            $(this).css("border-width","3px")
-        })
+        $(".pad").focusin(function(){
+            activateButton(this.id)
+        });
 
-          $(".pad").mouseenter(function(){
-            $(this).css("border-width","3px")
-        })
+        $(".pad").mousedown(function(){
+            activateButton(this.id)
+        });
 
-        $(".pad").blur(function(){
-            $(this).css("border-width","2px")
-        })
+     $(".pad").mouseup(function(){
+            deactivateButton(this.id)
+        });
 
-          $(".pad").mouseleave(function(){
-            $(this).css("border-width","2px")
-        })
+        $(".pad").focusout(function(){
+            deactivateButton(this.id)
+        });
+
+     
 
 });
 
@@ -114,34 +115,35 @@ $(document).keydown(function(event){
 
 
 <!--highest level container-->
-<div class="container mt-5 pb-4" id="drum-machine">
-   <h4 class="text-center"> Nick's Drum Machine</h4>
+<div class="container mt-5 pb-4 " id="drum-machine">
+   <h4 class="text-center mt-3 "> Nick's Drum Machine</h4>
 
     <div class="container">     
         <div class="row">
 
             <div class="col-sm-1">
             </div>
+         
 
-           <div class="d-flex flex-column col-sm-5"
+           <div class="d-flex flex-column col-sm-5 bg-info mt-3"
                 id = "pads">
                 
                    <div class="d-flex justify-content-around">
-                        <button type="button" class="pad" id= "btnq" onclick="padSound('Q')" >Q</button>
-                        <button type="button" class="pad" onclick="padSound('W')">W</button>
-                        <button type="button" class="pad" onclick="padSound('E')">E</button>
+                        <button type="button" class="pad" id = "Q" onclick="padSound(this.id,false)" >Q</button>
+                        <button type="button" class="pad" id = "W" onclick="padSound(this.id,false)">W</button>
+                        <button type="button" class="pad" id = "E" onclick="padSound(this.id)">E</button>
                     </div>
 
                     <div class="d-flex justify-content-around">
-                        <button type="button" class="pad" onclick="padSound('A')">A</button>
-                        <button type="button" class="pad" onclick="padSound('S')">S</button>
-                        <button type="button" class="pad" onclick="padSound('D')">D</button>
+                        <button type="button" class="pad" id = "A" onclick="padSound(this.id)">A</button>
+                        <button type="button" class="pad" id = "S" onclick="padSound(this.id)">S</button>
+                        <button type="button" class="pad" id = "D" onclick="padSound(this.id)">D</button>
                     </div>
 
                     <div class="d-flex justify-content-around">
-                        <button type="button" class="pad" onclick="padSound('Z')">Z</button>
-                        <button type="button" class="pad" onclick="padSound('X')">X</button>
-                        <button type="button" class="pad" onclick="padSound('C')">C</button>
+                        <button type="button" class="pad" id = "Z" onclick="padSound(this.id)">Z</button>
+                        <button type="button" class="pad" id = "X" onclick="padSound(this.id)">X</button>
+                        <button type="button" class="pad" id = "C" onclick="padSound(this.id)">C</button>
                     </div>
 
                 
@@ -150,37 +152,34 @@ $(document).keydown(function(event){
             <div class="col-sm-1">
             </div>
 
-            <div class="col-sm-4 d-flex flex-column justify-content-around " 
+            <div class="col-sm-4 d-flex flex-column justify-content-around bg-light mt-3 pt-2 pb-3" 
                 id = "controls">
            
-
-                <div class="align-self-center custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="switch1" onchange = setpower() checked>
+                <div class="align-self-center custom-control custom-switch mb-3">
+                    <input type="checkbox" class="custom-control-input bg-danger" id="switch1" onchange = setpower() checked>
                     <label class="custom-control-label" for="switch1">Power</label>
                 </div>
 
-                 
-
-                <p class="align-self-center" id= "display" >Play the drums!</p>
-
-                <audio></audio>
-
+               
+                <p class="align-self-center bg-info mt-2" id= "display" >Play the Drums!</p>
+                
+               <!-- <audio></audio> -->
+               
                 <div>
-                    <label class="align-self-center" id = "labelvol" for="volume">Volume 5</label>
+                    <label class="ml-3" id = "labelvol" for="volume">Volume 5</label>
                     
-                    <div class="d-flex">
+                    <div class="d-flex ml-3 mr-3">
                        
-                        <i class="fas fa-volume-mute mr-2" id= "mute" title = "mute on" ></i>
-                        <i class="fas fa-volume-up mr-2" id= "unmute" title = "mute off" ></i>
-                        <input type="range" id = "volume" value = "50" class="align-self-center form-control-range" title = "5" onchange = "setVolume(this.value)"></input>
+                        <i class="fas fa-volume-mute mr-2 text-primary" id= "mute" title = "mute on" ></i>
+                        <i class="fas fa-volume-up mr-2 text-primary" id= "unmute" title = "mute off" ></i>
+                        <input type="range" id = "volume" value = "50" class="align-self-center form-control-range text-dark" title = "5" onchange = "setVolume(this.value)"></input>
                         
                     </div>
                 </div>
 
             </div>
 
-            <div class="col-sm-1">
-            </div>
+           
 
         </div>
 

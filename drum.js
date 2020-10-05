@@ -50,19 +50,26 @@ const dataArr = [
                     }
                 ]
 
-                 
+function activateButton(btn){
+  
+          document.getElementById(btn).style.color = "yellow";
+          document.getElementById(btn).style.backgroundColor = "black";
+            }        
 
-function padSound(drumid) {
+function deactivateButton(btn){
+            document.getElementById(btn).style.color = "black";
+            document.getElementById(btn).style.backgroundColor = "lightgrey";
+            } 
+
+function padSound(drumid,hotkey) {
 
     var disptext = "";
     var audioObj;
     var vol = 0;
-   // alert("drumid");
- //   alert(drumid,);
- //   alert(dataArr[0].id);
 
+ 
 
-
+    // check is power on
   if (power){
 
     // check array for id and set text
@@ -72,17 +79,27 @@ function padSound(drumid) {
             audioObj = new Audio(dataArr[i].audio);
            }
         }
+
+        activateButton(drumid)
 // set volume
-     
-   //     audioObj.volume = ((document.getElementById("volume").value / 100));
+  
     audioObj.volume = document.getElementById("volume").value /100;
+    document.getElementById("display").innerHTML = disptext;
+     
+    audioObj.play();
 
-       document.getElementById("display").innerHTML = disptext;
-
-    audioObj.play()
+    deactivateButton(drumid)
     }
 
+    function activateButton(btn){
+ 
+        document.getElementById(btn).style.color = "yellow";
+        document.getElementById(btn).style.backgroundColor = "black";
+          } 
+
 }
+
+
 
 function setVolume(vol) {
     
@@ -92,6 +109,13 @@ function setVolume(vol) {
 function setpower() {
     
     power = !power
+
+    if (!power){
+        document.getElementById("display").innerHTML = "Power is off"
+    }
+    else {
+        document.getElementById("display").innerHTML = "Play the Drums!"
+    }
 }
 //jquery methods
 
