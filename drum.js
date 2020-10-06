@@ -50,25 +50,16 @@ const dataArr = [
                     }
                 ]
 
-function activateButton(btn){
-  
-          document.getElementById(btn).style.color = "yellow";
-          document.getElementById(btn).style.backgroundColor = "black";
-            }        
+       
 
-function deactivateButton(btn){
-            document.getElementById(btn).style.color = "black";
-            document.getElementById(btn).style.backgroundColor = "lightgrey";
-            } 
+
 
 function padSound(drumid,hotkey) {
 
     var disptext = "";
     var audioObj;
     var vol = 0;
-
  
-
     // check is power on
   if (power){
 
@@ -81,24 +72,31 @@ function padSound(drumid,hotkey) {
         }
 
         activateButton(drumid)
+    
 // set volume
-  
     audioObj.volume = document.getElementById("volume").value /100;
     document.getElementById("display").innerHTML = disptext;
      
     audioObj.play();
 
-    deactivateButton(drumid)
+    // delay 3 second
+    
+  deactivateButton(drumid);
+
+   function deactivateButton(text){ 
+    var x = document.getElementById(text);
+    setTimeout(function(){ x.style.color ="black" }, 200);
+    setTimeout(function(){ x.style.backgroundColor ="lightgray" }, 200);
+        }
     }
-
-    function activateButton(btn){
- 
-        document.getElementById(btn).style.color = "yellow";
-        document.getElementById(btn).style.backgroundColor = "black";
-          } 
-
 }
 
+function activateButton(btn){
+  
+    document.getElementById(btn).style.color = "yellow";
+    document.getElementById(btn).style.backgroundColor = "black";
+
+      } 
 
 
 function setVolume(vol) {
